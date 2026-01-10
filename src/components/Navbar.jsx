@@ -1,40 +1,77 @@
 import { useMemo, useState } from "react";
+import { Link, useLocation } from 'react-router-dom';
 
-function NavItem({ label, href, active, onClick }) {
-  return (
-    <a
-      href={href}
-      onClick={onClick}
-      className={[
-        "block",
-        "px-4 py-3 sm:px-6", // ⬅️ slightly tighter on mobile
-        "!text-white",
-        "text-xs sm:text-sm font-semibold uppercase", // ⬅️ smaller text on mobile
-        "transition-colors duration-150",
-        "hover:!text-white",
-        "hover:bg-[#F6170F]",
-        active ? "bg-[#F6170F]" : "",
-      ].join(" ")}
-    >
-      {label}
-    </a>
-  );
+function NavItem({ label, to, active, onClick }) {
+  // Check if the link is an external hash link
+  if (to.startsWith('#')) {
+    return (
+      <a
+        href={to}
+        onClick={onClick}
+        className={[
+          "block",
+          "px-4 py-3 sm:px-6", // ⬅️ slightly tighter on mobile
+          "!text-white",
+          "text-xs sm:text-sm font-semibold uppercase", // ⬅️ smaller text on mobile
+          "transition-colors duration-150",
+          "hover:!text-white",
+          "hover:bg-[#F6170F]",
+          active ? "bg-[#F6170F]" : "",
+        ].join(" ")}
+      >
+        {label}
+      </a>
+    );
+  } else {
+    return (
+      <Link
+        to={to}
+        onClick={onClick}
+        className={[
+          "block",
+          "px-4 py-3 sm:px-6", // ⬅️ slightly tighter on mobile
+          "!text-white",
+          "text-xs sm:text-sm font-semibold uppercase", // ⬅️ smaller text on mobile
+          "transition-colors duration-150",
+          "hover:!text-white",
+          "hover:bg-[#F6170F]",
+          active ? "bg-[#F6170F]" : "",
+        ].join(" ")}
+      >
+        {label}
+      </Link>
+    );
+  }
 }
 
 export default function Navbar() {
   const nav = useMemo(
     () => [
-      { label: "Home", href: "#home" },
-      { label: "Notice", href: "#notice" },
-      { label: "Events", href: "#events" },
-      { label: "Contributions", href: "#contributions" },
-      { label: "Government Schemes", href: "#schemes" },
-      { label: "About Us", href: "#about" },
+      { label: "Home", to: "/" },
+      { label: "Notice", to: "/" },
+      { label: "Events", to: "#events" },
+      { label: "Contributions", to: "#contributions" },
+      { label: "Government Schemes", to: "#schemes" },
+      { label: "About Us", to: "/about" },
     ],
     []
   );
 
-  const [active, setActive] = useState("Home");
+  const location = useLocation();
+  const [active, setActive] = useState(getInitialActive());
+
+  function getInitialActive() {
+    switch(location.pathname) {
+      case '/': return 'Home';
+      case '/about': return 'About Us';
+      default: return 'Home';
+    }
+  }
+
+  // Update active state when location changes
+  useMemo(() => {
+    setActive(getInitialActive());
+  }, [location.pathname]);
 
   return (
     <header className="w-full">
@@ -63,7 +100,7 @@ export default function Navbar() {
                 <NavItem
                   key={item.label}
                   label={item.label}
-                  href={item.href}
+                  to={item.to}
                   active={active === item.label}
                   onClick={() => setActive(item.label)}
                 />
