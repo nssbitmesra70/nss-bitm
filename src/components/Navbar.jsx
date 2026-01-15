@@ -1,40 +1,40 @@
 import { useMemo, useState } from "react";
+import { NavLink } from "react-router-dom";
 
-function NavItem({ label, href, active, onClick }) {
+function NavItem({ label, to}) {
   return (
-    <a
-      href={href}
-      onClick={onClick}
-      className={[
-        "block",
-        "px-4 py-3 sm:px-6", // ⬅️ slightly tighter on mobile
-        "!text-white",
-        "text-xs sm:text-sm font-semibold uppercase", // ⬅️ smaller text on mobile
-        "transition-colors duration-150",
-        "hover:!text-white",
-        "hover:bg-[#F6170F]",
-        active ? "bg-[#F6170F]" : "",
-      ].join(" ")}
+    <NavLink
+      to={to}
+      className={({ isActive }) =>
+        [
+          "block",
+          "px-4 py-3 sm:px-6",
+          "text-white",
+          "text-xs sm:text-sm font-semibold uppercase",
+          "transition-colors duration-150",
+          "hover:text-white",
+          "hover:bg-[#F6170F]",
+          isActive ? "bg-[#F6170F]" : "", 
+        ].join(" ")
+      }
     >
       {label}
-    </a>
+    </NavLink>
   );
 }
 
 export default function Navbar() {
   const nav = useMemo(
     () => [
-      { label: "Home", href: "#home" },
-      { label: "Notice", href: "#notice" },
-      { label: "Events", href: "#events" },
-      { label: "Contributions", href: "#contributions" },
-      { label: "Government Schemes", href: "#schemes" },
-      { label: "About Us", href: "#about" },
+      { label: "Home", to: "/" },
+      { label: "Notice", to: "/notice" },
+      { label: "Events", to: "/events" },
+      { label: "Contributions", to: "/contributions" },
+      { label: "Government Schemes", to: "/schemes" },
+      { label: "About Us", to: "/about" },
     ],
     []
   );
-
-  const [active, setActive] = useState("Home");
 
   return (
     <header className="w-full">
@@ -55,7 +55,7 @@ export default function Navbar() {
 
           {/* Nav row */}
           <div className="relative bg-[#19366b]">
-            <div className="absolute right-0 top-0 h-full w-[4px] bg-[#F6170F]" />
+            <div className="absolute right-0 top-0 h-full w-4px bg-[#F6170F]" />
 
             {/* 2 rows on mobile, single row on desktop */}
             <nav className="grid grid-cols-3 sm:grid-cols-6 items-center text-center">
@@ -63,9 +63,7 @@ export default function Navbar() {
                 <NavItem
                   key={item.label}
                   label={item.label}
-                  href={item.href}
-                  active={active === item.label}
-                  onClick={() => setActive(item.label)}
+                  to={item.to}
                 />
               ))}
             </nav>

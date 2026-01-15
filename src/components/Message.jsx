@@ -1,12 +1,12 @@
-export default function Notices() {
+export default function Message() {
   return (
     <section id="notice" className="w-full bg-[#E0F7FA] py-10">
       <div className="w-full px-4">
         {/* Outer frame (dark border look from screenshot) */}
-        <div className="w-full overflow-hidden rounded-[6px] border border-slate-300 bg-white shadow-[0_10px_28px_rgba(0,0,0,0.18)]">
+        <div className="w-full overflow-hidden rounded-6px border border-slate-300 bg-white shadow-[0_10px_28px_rgba(0,0,0,0.18)]">
           {/* Top bar */}
           <div className="flex items-center justify-between bg-[#19366b] px-6 py-3">
-            <div className="w-[180px] text-left text-sm font-semibold uppercase tracking-wide text-white leading-tight">
+            <div className="w-180px text-left text-sm font-semibold uppercase tracking-wide text-white leading-tight">
               RECENT
               <br />
               NOTICES
@@ -16,7 +16,7 @@ export default function Notices() {
               NSS EXECUTIVE FORM K25 FORM
             </div>
 
-            <div className="w-[180px] text-right">
+            <div className="w-180px text-right">
               <a
                 href="#"
                 className="inline-block rounded-full bg-[#F6170F] px-4 py-2 text-xs font-bold uppercase tracking-wide text-white"
@@ -61,7 +61,7 @@ export default function Notices() {
                 <img
                   src="/Manna.png"
                   alt="Prof. Indranil Manna"
-                  className="h-[92px] w-[92px] rounded-full object-cover"
+                  className="h-92px w-92px rounded-full object-cover"
                   draggable="false"
                 />
                 <div className="min-w-0">
@@ -88,7 +88,7 @@ export default function Notices() {
                 <img
                   src="/Pandey.png"
                   alt="Dr. O.P. Pandey"
-                  className="h-[92px] w-[92px] rounded-full object-cover"
+                  className="h-92px w-92px rounded-full object-cover"
                   draggable="false"
                 />
                 <div className="min-w-0">

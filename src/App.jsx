@@ -1,15 +1,24 @@
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
 import Hero from "./components/Hero";
-import Notices from "./components/Notices";
+import { Routes, Route } from "react-router-dom";
+import GovernmentSchemes from "./pages/GovernmentSchemes";
+import Layout from "./components/Layout";
+import Message from "./components/Message";
 
 export default function App() {
   return (
     <>
-      <Navbar />
-      <Hero />
-      <Notices />
-      <Footer />
+      <Routes>
+        <Route element={<Layout/>}>
+          <Route path='/' element={
+            <>
+            <Hero/>
+            <Message/>
+            </>
+          }/>
+          <Route path="/schemes" element={<GovernmentSchemes/>}/>
+        </Route>
+      </Routes>
+
     </>
   );
 }
