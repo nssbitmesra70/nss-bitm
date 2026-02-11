@@ -5,9 +5,8 @@ import {
   Laptop,
   Rocket,
   ArrowRight
-} from 'lucide-react';
+} from "lucide-react";
 
-//Icon map 
 const iconMap = {
   IndianRupee,
   HeartPulse,
@@ -17,56 +16,102 @@ const iconMap = {
 };
 
 function SchemeCard({ scheme }) {
-  const Icon = iconMap[scheme.categoryIcon];
+  const IconComponent = iconMap[scheme.categoryIcon];
 
   return (
-    <div className="group relative bg-white rounded-2xl p-6 shadow-sm border border-gray-100 
-                    hover:shadow-xl hover:-translate-y-1 transition-all duration-300 
-                    flex flex-col h-full">
+    <div
+      className="
+      bg-white
+      border border-[#D9DEE7]
+      rounded-md
+      flex flex-col h-full
 
-      {/* Header */}
-      <div className="flex items-start justify-between mb-4">
-        <div className="p-3 bg-red-50 rounded-lg group-hover:bg-red-600 transition-colors duration-300">
-          {Icon && (
-            <Icon className="w-6 h-6 text-red-600 group-hover:text-white" />
-          )}
+      transition-all duration-200 ease-out
+      hover:-translate-y-[2px]
+      hover:shadow-sm
+      hover:border-[#19366B]/40
+
+      active:translate-y-0
+      active:shadow-none
+     "
+    >
+      <div className="h-[3px] w-full bg-[#19366B]" />
+      <div className="p-6 flex flex-col h-full">
+        {/* Category header */}
+        <div className="flex items-center gap-3 mb-4">
+          <div
+            className="
+              w-9 h-9
+              flex items-center justify-center
+              border border-[#E1E6ED]
+              rounded
+              bg-[#F8FAFC]
+            "
+          >
+            {IconComponent && (
+              <IconComponent size={18} className="text-[#F6170F]" />
+            )}
+          </div>
+
+          <span
+            className="
+              text-[11px]
+              uppercase
+              tracking-wider
+              text-[#6B7280]
+              break-words
+              whitespace-normal
+            "
+          >
+            {scheme.category}
+          </span>
         </div>
 
-        <span className="text-[10px] uppercase tracking-widest font-bold px-3 py-1 
-                         bg-gray-100 text-gray-600 rounded-full 
-                         group-hover:bg-red-100 group-hover:text-red-700 transition-colors">
-          {scheme.category}
-        </span>
-      </div>
-
-      {/* Content */}
-      <div className="grow">
-        <h3 className="text-xl font-bold text-gray-900 mb-2 
-                       group-hover:text-red-600 transition-colors">
+        {/* Title */}
+        <h3
+          className="
+            text-[16px]
+            font-semibold
+            text-[#19366B]
+            leading-snug
+            mb-3
+          "
+        >
           {scheme.title}
         </h3>
-        <p className="text-gray-600 text-sm leading-relaxed line-clamp-3">
+
+        {/* Description */}
+        <p
+          className="
+            text-sm
+            text-[#4B5563]
+            leading-relaxed
+            line-clamp-3
+            mb-6
+          "
+        >
           {scheme.shortInfo}
         </p>
-      </div>
 
-      {/* Footer */}
-      <div className="mt-6 pt-4 border-t border-gray-50">
-        <a
-          href={scheme.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 text-sm font-bold 
-                     text-red-600 hover:text-red-800 transition-colors"
-        >
-          View Details
-          <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
-        </a>
+        {/* Footer action */}
+        <div className="mt-auto pt-4 border-t border-[#E6EAF0]">
+          <a
+            href={scheme.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="
+              inline-flex items-center gap-1.5
+              text-sm font-medium
+              text-[#19366B]
+              hover:underline
+              underline-offset-4
+            "
+          >
+            View details
+            <ArrowRight size={14} />
+          </a>
+        </div>
       </div>
-
-      {/* Bottom Accent */}
-      <div className="absolute bottom-0 left-0 h-1 w-0 bg-red-600 rounded-b-2xl 
-                      transition-all duration-500 group-hover:w-full"></div>
     </div>
   );
 }
