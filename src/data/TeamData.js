@@ -56,7 +56,7 @@ const teamData = {
             role: "Design Coordinator",
             name: "ARCHEET BADHUL",
             image: "/teams/Design-Coordinator.jpg",
-            linkedin: "https://www.linkedin.com/in/aditi-nayan-61535b264/",
+            linkedin: "https://www.linkedin.com/in/archeet-bandhul-7816b32b1/",
             instagram: "https://www.instagram.com/archeet_2938?igsh=d21kcDYxMnN4OXFn",
         },
         {
@@ -69,7 +69,7 @@ const teamData = {
         {
             role: "Cyber & Web Coordinator",
             name: "AYUSHMAN AGARWAL",
-            image: "/teams/Cyber&web-Coordinator.jpg",
+            image: "/teams/cybercoordinator.png",
             linkedin: "https://www.linkedin.com/in/ayushman-agarwal-a08b9b160/",
             instagram: "",
         },
@@ -147,7 +147,15 @@ const teamData = {
 
     
     teams: [
-        
+        {
+            teamName: "Cyber & Web Team",
+            assistantCoordinators: [
+                { name: "RAKSHIT KUMAR", image: "/teams/Cyber&Web-assistent-coordinator.jpg", linkedin: "https://www.linkedin.com/in/rakshit-kumar-9979b1292/", instagram: "https://www.instagram.com/rakshit___kumar?igsh=eGJlZm85ZDRoMTFt" },
+            ],
+            
+        },
+
+
         {
             teamName: "Event Team",
             assistantCoordinators: [
@@ -179,13 +187,7 @@ const teamData = {
             
         },
 
-        {
-            teamName: "Cyber & Web Team",
-            assistantCoordinators: [
-                { name: "RAKSHIT KUMAR", image: "/teams/Cyber&Web-assistent-coordinator.jpg", linkedin: "https://www.linkedin.com/in/rakshit-kumar-9979b1292/", instagram: "https://www.instagram.com/rakshit___kumar?igsh=eGJlZm85ZDRoMTFt" },
-            ],
-            
-        },
+        
 
         {
             teamName: "Coverage Team",
