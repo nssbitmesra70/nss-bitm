@@ -1,146 +1,154 @@
+import React from "react";
 import teamData from "../data/teamData";
-import { FaLinkedin, FaInstagram } from "react-icons/fa";
+import { FaLinkedin, FaInstagram, FaEnvelope } from "react-icons/fa";
+
+const TeamCard = ({ image, name, role, linkedin, instagram, email }) => {
+  return (
+    <div
+      className="relative group bg-white rounded-3xl shadow-lg 
+                 w-full max-w-[280px] h-[360px] mx-auto
+                 flex flex-col items-center justify-start
+                 pt-10 pb-6 px-6 text-center
+                 transition-all duration-300
+                 hover:-translate-y-2 hover:shadow-2xl"
+    >
+      {/* NSS tricolor accent (top line) */}
+      <span className="absolute inset-x-0 top-0 h-1 rounded-t-3xl bg-gradient-to-r from-[#FF9933] via-white to-[#138808]" />
+
+      {/* Soft patriotic glow on hover */}
+      <span
+        className="pointer-events-none absolute -inset-1 rounded-3xl
+                   bg-gradient-to-r from-[#FF9933]/10 via-white/10 to-[#138808]/10
+                   opacity-0 blur-lg transition-opacity duration-300
+                   group-hover:opacity-100"
+      />
+      
+      {/* Avatar */}
+      <div className="w-40 h-40 rounded-full overflow-hidden 
+                      border-4 border-white shadow-md z-10">
+        <img
+          src={image || "/team/placeholder.jpg"}
+          alt={name}
+          className="w-full h-full object-cover"
+        />
+      </div>
+
+      {/* Text */}
+      <h3 className="mt-6 text-xl font-bold text-gray-900 z-10">
+        {name}
+      </h3>
+      <p className="text-base text-gray-500 z-10">
+        {role}
+      </p>
+
+      {/* Social Icons (HOVER ONLY) */}
+      <div
+        className="mt-5 flex gap-4 z-10
+                   opacity-0 translate-y-2
+                   transition-all duration-300
+                   group-hover:opacity-100 group-hover:translate-y-0"
+      >
+        {linkedin && (
+          <a
+            href={linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-600 hover:text-[#0A66C2] transition-colors"
+          >
+            <FaLinkedin size={22} />
+          </a>
+        )}
+        {instagram && (
+          <a
+            href={instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-600 hover:text-[#E1306C] transition-colors"
+          >
+            <FaInstagram size={22} />
+          </a>
+        )}
+        {email && (
+          <a
+            href={`mailto:${email}`}
+            className="text-gray-600 hover:text-gray-900 transition-colors"
+          >
+            <FaEnvelope size={22} />
+          </a>
+        )}
+      </div>
+    </div>
+  );
+};
 
 const Teams = () => {
-    return (
-        <div className="px-5 py-12 max-w-7xl mx-auto">
+  return (
+    <div className="relative min-h-screen bg-slate-50 overflow-hidden">
+      
+      {/* Background Patriotic Mesh Blobs */}
+      <div className="absolute top-0 left-0 w-full h-full -z-0 pointer-events-none">
+        {/* Saffron Blob (Top Left) */}
+        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-[#FF9933]/10 blur-[120px]" />
+        
+        {/* Green Blob (Bottom Right) */}
+        <div className="absolute bottom-[5%] right-[-5%] w-[45%] h-[45%] rounded-full bg-[#138808]/10 blur-[120px]" />
+        
+        {/* Blue Accent Blob (Middle Left) */}
+        <div className="absolute top-[40%] left-[-5%] w-[30%] h-[30%] rounded-full bg-blue-700/5 blur-[100px]" />
+      </div>
 
-            {/*EXECUTIVE BODY */}
-            <h2 className="text-3xl font-bold mb-12 text-center text-[#19366b]">
-                Executive Body
-            </h2>
+      {/* Content Container */}
+      <div className="relative z-10 px-6 py-16 max-w-7xl mx-auto">
+        
+        {/* EXECUTIVE BODY */}
+        <h2 className="text-4xl font-extrabold mb-14 text-center text-[#19366b] tracking-tight">
+          Executive Body
+        </h2>
 
-            <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3 mb-20">
-                {teamData.executive.map((member, index) => (
-                    <div
-                        key={index}
-                        className="group bg-white border rounded-2xl p-6 text-center
-                        transition-all duration-300
-                        hover:-translate-y-2 hover:shadow-xl"
-                    >
-                        {/* IMAGE (RECTANGLE, SMALLER) */}
-                        <img
-                            src={member.image || "/team/placeholder.jpg"}
-                            alt={member.name}
-                            className="w-40 h-40 mx-auto rounded-full
-                            object-cover object-top mb-5
-                            ring-4 ring-gray-100
-                          group-hover:ring-[#F6170F]
-                            transition-all duration-300"
-                        />
-
-
-                        <h3 className="text-sm uppercase tracking-wide text-gray-500">
-                            {member.role}
-                        </h3>
-                        <p className="text-lg font-semibold text-[#19366b]">
-                            {member.name}
-                        </p>
-
-                        {/* SOCIAL ICONS */}
-                        <div className="flex justify-center gap-5 mt-4
-                            opacity-0 translate-y-3
-                            group-hover:opacity-100 group-hover:translate-y-0
-                            transition-all duration-300">
-                            {member.linkedin && (
-                                <a
-                                    href={member.linkedin}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="text-gray-500 hover:text-[#0A66C2] text-xl"
-                                >
-                                    <FaLinkedin />
-                                </a>
-                            )}
-                            {member.instagram && (
-                                <a
-                                    href={member.instagram}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="text-gray-500 hover:text-[#E1306C] text-xl"
-                                >
-                                    <FaInstagram />
-                                </a>
-                            )}
-                        </div>
-                    </div>
-                ))}
-            </div>
-
-            {/*  SUB TEAMS */}
-            <h2 className="text-3xl font-bold mb-14 text-center text-[#19366b]">
-                Sub Teams
-            </h2>
-
-            <div className="grid gap-14 sm:grid-cols-2 lg:grid-cols-3">
-                {teamData.teams.map((team, index) => {
-                    const member = team.assistantCoordinators?.[0];
-
-                    return (
-                        <div
-                            key={index}
-                            className={`flex flex-col items-center
-                ${index === teamData.teams.length - 1 ? "lg:col-span-3" : ""}
-              `}
-                        >
-                            {/* TEAM NAME */}
-                            <h3 className="text-xl font-semibold mb-6 text-[#19366b] text-center">
-                                {team.teamName}
-                            </h3>
-
-                            {/* ASSISTANT COORDINATOR CARD */}
-                            <div
-                                className="group bg-white border rounded-xl p-5 text-center
-                           w-full max-w-sm
-                           transition-all duration-300
-                           hover:-translate-y-1 hover:shadow-lg"
-                            >
-                                <img
-                                    src={member?.image || "/team/placeholder.jpg"}
-                                    alt={member?.name}
-                                    className="w-full h-56 rounded-lg
-                             object-cover object-top mb-4"
-                                />
-
-                                <p className="text-sm uppercase tracking-wide text-gray-500">
-                                    Assistant Coordinator
-                                </p>
-                                <p className="text-lg font-medium text-[#19366b]">
-                                    {member?.name}
-                                </p>
-
-                                <div className="flex justify-center gap-4 mt-3
-                                opacity-0 group-hover:opacity-100
-                                transition-all duration-300">
-                                    {member?.linkedin && (
-                                        <a
-                                            href={member.linkedin}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="text-gray-500 hover:text-[#0A66C2] text-lg"
-                                        >
-                                            <FaLinkedin />
-                                        </a>
-                                    )}
-                                    {member?.instagram && (
-                                        <a
-                                            href={member.instagram}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="text-gray-500 hover:text-[#E1306C] text-lg"
-                                        >
-                                            <FaInstagram />
-                                        </a>
-                                    )}
-                                </div>
-                            </div>
-                        </div>
-                    );
-                })}
-            </div>
-
+        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-3 mb-32">
+          {teamData.executive.map((m, i) => (
+            <TeamCard
+              key={i}
+              image={m.image}
+              name={m.name}
+              role={m.role}
+              linkedin={m.linkedin}
+              instagram={m.instagram}
+              email={m.email}
+            />
+          ))}
         </div>
-    );
+
+        {/* SUB TEAMS */}
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent mb-24" />
+        
+        <h2 className="text-4xl font-extrabold mb-14 text-center text-[#19366b] tracking-tight">
+          Sub Teams
+        </h2>
+
+        <div className="grid gap-16 sm:grid-cols-2 lg:grid-cols-3">
+          {teamData.teams.map((team, idx) => {
+            const m = team.assistantCoordinators?.[0];
+            return (
+              <div key={idx} className="flex flex-col items-center">
+                <h3 className="text-2xl font-bold mb-8 text-[#19366b] text-center bg-white/50 px-4 py-1 rounded-full border border-blue-900/10 shadow-sm">
+                  {team.teamName}
+                </h3>
+
+                <TeamCard
+                  image={m?.image}
+                  name={m?.name}
+                  role="Assistant Coordinator"
+                  linkedin={m?.linkedin}
+                  instagram={m?.instagram}
+                />
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Teams;
