@@ -90,17 +90,4 @@ export const events = [
     description: "Contributing to the national Swachh Bharat cleanliness and painting mission.",
     detailedDescription: "A mega cleanliness and beautification drive planned for Gandhi Jayanti. NSS BITM volunteers will clean designated areas of the public railway station and central park. Activities include wall painting with social messages, setting up dustbins, and conducting street plays to encourage the general public not to litter."
   },
-  {
-    id: 8,
-    name: "Cycle Marathon",
-    image: "/Cycle_marathon.png",
-    category: "Fitness & Rallies",
-    date: "2026-06-05",
-    location: "Starting point: BIT Mesra Campus Gate",
-    time: "06:00 AM - 08:30 AM",
-    coordinator: "Dr. O.P. Pandey",
-    contact: "+91 95355 66778",
-    description: "Promoting fitness, eco-friendly transportation, and environmental sustainability.",
-    detailedDescription: "An exciting cycle rally organized on World Environment Day to raise awareness about carbon emissions and promote cycling for a healthier lifestyle. The route covers 10 kilometers around Ballari city. T-shirts, energy drinks, and certificates will be provided to all participants. Bring your own bicycle and join the movement for a green future!"
-  }
 ];
