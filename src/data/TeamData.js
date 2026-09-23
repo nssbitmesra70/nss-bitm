@@ -74,15 +74,20 @@ const teamData = {
     teams: [
         {
             teamName: "Cyber & Web Team",
-            assistantCoordinators: [
+            incharges: [
                 {
                     name: "Kushagra Bhatnagar",
+                    role: "Web Incharge",
                     image: "/teams/web cyber coordnator.png",
-                   
+
+
                 },
                 {
                     name: "Arvind Paswan",
+                    role: "Web Incharge",
                     image: "/teams/web_incharge.jpg",
+                    linkedin: "",
+
                 },
             ],
         },
@@ -98,9 +103,10 @@ const teamData = {
         },
         {
             teamName: "Coverage Team",
-            assistantCoordinators: [
+            incharges: [
                 {
                     name: "Ashley Jain",
+                    role: "Coverage Incharge",
                     image: "/teams/coverage_ic.jpg",
 
                 },

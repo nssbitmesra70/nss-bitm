@@ -10,7 +10,11 @@ import Events from "./components/Events";
 import Notices from "./pages/Notices";
 import SEO from "./components/SEO";
 import ScrollToTop from "./components/ScrollToTop";
-import { getBreadcrumbSchema } from "./lib/seo.js";
+import {
+  getBreadcrumbSchema,
+  getFaqSchema,
+  getRootSchema
+} from "./lib/seo.js";
 
 export default function App() {
   return (
@@ -25,7 +29,21 @@ export default function App() {
               <SEO
                 canonicalUrl="/"
                 image="/og-image.png"
-                schema={getBreadcrumbSchema([{ name: "Home", item: "/" }])}
+                description="Official website of NSS BIT Mesra — National Service Scheme, Birla Institute of Technology, Mesra, Ranchi. Student volunteers serving communities across Jharkhand through camps, drives & outreach."
+                keywords={[
+                  "NSS BIT Mesra",
+                  "NSS BITM",
+                  "nss bitmesra",
+                  "National Service Scheme BIT Mesra",
+                  "BIT Mesra volunteer",
+                  "NSS Ranchi",
+                  "NSS BIT Mesra official website",
+                ]}
+                schema={[
+                  getRootSchema(),
+                  getFaqSchema(),
+                  getBreadcrumbSchema([{ name: "Home", item: "/" }]),
+                ]}
               />
               <Hero />
               <Message />

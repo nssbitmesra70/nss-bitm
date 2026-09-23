@@ -44,7 +44,10 @@ export default function SEO({
     });
   }, [title, description, image, canonicalUrl, type, noIndex, keywords]);
 
-  const jsonLd = schema || getRootSchema();
+  const jsonLdList = (() => {
+    const s = schema || getRootSchema();
+    return Array.isArray(s) ? s : [s];
+  })();
 
   return (
     <>
@@ -96,13 +99,14 @@ export default function SEO({
         />
       )}
 
-      {/* Structured Data (JSON-LD) */}
-      {jsonLd && (
+      {/* Structured Data (JSON-LD) — one <script> per schema */}
+      {jsonLdList.map((ld, i) => (
         <script
+          key={i}
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }}
         />
-      )}
+      ))}
     </>
   );
 }
