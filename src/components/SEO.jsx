@@ -49,6 +49,8 @@ export default function SEO({
     return Array.isArray(s) ? s : [s];
   })();
 
+  const ogImage = meta.openGraph.images?.[0];
+
   return (
     <>
       <title>{meta.title}</title>
@@ -76,12 +78,24 @@ export default function SEO({
       <meta property="og:site_name" content={meta.openGraph.siteName} />
       <meta property="og:type" content={meta.openGraph.type} />
       <meta property="og:locale" content={meta.openGraph.locale} />
-      {meta.openGraph.images?.[0]?.url && (
-        <meta property="og:image" content={meta.openGraph.images[0].url} />
+      {ogImage?.url && (
+        <>
+          <meta property="og:image" content={ogImage.url} />
+          {ogImage.width && (
+            <meta property="og:image:width" content={String(ogImage.width)} />
+          )}
+          {ogImage.height && (
+            <meta property="og:image:height" content={String(ogImage.height)} />
+          )}
+          <meta property="og:image:type" content="image/png" />
+        </>
       )}
 
       {/* Twitter */}
       <meta name="twitter:card" content={meta.twitter.card} />
+      {SITE_CONFIG.twitterHandle && (
+        <meta name="twitter:site" content={SITE_CONFIG.twitterHandle} />
+      )}
       <meta name="twitter:title" content={meta.twitter.title} />
       <meta name="twitter:description" content={meta.twitter.description} />
       {meta.twitter.images?.[0] && (
@@ -89,14 +103,6 @@ export default function SEO({
       )}
       {meta.twitter.creator && (
         <meta name="twitter:creator" content={meta.twitter.creator} />
-      )}
-
-      {/* Google Verification */}
-      {meta.verification?.google && (
-        <meta
-          name="google-site-verification"
-          content={meta.verification.google}
-        />
       )}
 
       {/* Structured Data (JSON-LD) — one <script> per schema */}
@@ -112,3 +118,4 @@ export default function SEO({
 }
 
 export { SEO, SITE_CONFIG };
+

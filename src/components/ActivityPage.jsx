@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import { activities } from '../data/activities';
+import SEO from './SEO';
+import { getBreadcrumbSchema } from '../lib/seo.js';
 
 export default function ActivityPage() {
     const { domainId } = useParams();
@@ -21,6 +23,17 @@ export default function ActivityPage() {
 
     return (
         <div className="w-full flex flex-col min-h-screen">
+            <SEO
+                title={heroTitle || title}
+                description={content?.[0] || `${title} activities by NSS BIT Mesra — community service and social outreach.`}
+                canonicalUrl={`/activity/${domainId}`}
+                image={activityData.image}
+                schema={getBreadcrumbSchema([
+                    { name: "Home", item: "/" },
+                    { name: "About Us", item: "/about" },
+                    { name: title, item: `/activity/${domainId}` },
+                ])}
+            />
 
             
             <section className="w-full relative">

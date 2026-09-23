@@ -135,7 +135,7 @@ export function constructMetadata({
       siteName: SITE_CONFIG.name,
       images: [
         isDefaultOg
-          ? { url: imageUrl, width: 1200, height: 630, alt: pageTitle }
+          ? { url: imageUrl, width: 1774, height: 887, alt: pageTitle }
           : { url: imageUrl, alt: pageTitle },
       ],
       locale: SITE_CONFIG.locale || "en_IN",
