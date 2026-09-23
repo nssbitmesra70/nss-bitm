@@ -87,6 +87,16 @@ const teamData = {
             ],
         },
         {
+            teamName: "Design Team",
+            assistantCoordinators: [
+                {
+                    name: "Shanvi Vats",
+                    image: "/teams/design_incharge.jpeg",
+
+                },
+            ],
+        },
+        {
             teamName: "Coverage Team",
             assistantCoordinators: [
                 {
