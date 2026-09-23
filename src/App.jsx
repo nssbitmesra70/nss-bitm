@@ -9,12 +9,19 @@ import GovernmentSchemes from "./pages/GovernmentSchemes";
 import Events from "./components/Events";
 import Notices from "./pages/Notices";
 import SEO from "./components/SEO";
-import { getBreadcrumbSchema, getFaqSchema, getRootSchema } from "./lib/seo.js";
+import ScrollToTop from "./components/ScrollToTop";
+import {
+  getBreadcrumbSchema,
+  getFaqSchema,
+  getRootSchema
+} from "./lib/seo.js";
 
 export default function App() {
   return (
-    <Routes>
-      <Route element={<Layout />}>
+    <>
+      <ScrollToTop />
+      <Routes>
+        <Route element={<Layout />}>
         <Route
           path="/"
           element={
@@ -51,5 +58,6 @@ export default function App() {
         <Route path="/schemes" element={<GovernmentSchemes />} />
       </Route>
     </Routes>
+    </>
   );
 }
