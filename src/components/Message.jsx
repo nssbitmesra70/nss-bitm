@@ -7,7 +7,7 @@ const sortedNotices = [...notices].sort(
 const latestNotices = sortedNotices.slice(0, 5);
 const scrollNotices = [...latestNotices, ...latestNotices];
 const latestEvents = [...events]
-  .sort((a, b) => b.id - a.id)
+  .sort((a, b) => new Date(b.date) - new Date(a.date))
   .slice(0, 6);
 
 export default function Message() {
